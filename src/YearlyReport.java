@@ -17,7 +17,7 @@ public class YearlyReport {
     public int getYearlyIncomeByMonth(int month) {
         int incomeByMonth = 0;
         for (YearlyRecord record : yearlyReports) {
-            if ((record.isExpense == false) & (record.month == month)) {
+            if ((!record.isExpense) & (record.month == month)) {
                 incomeByMonth = record.amount;
             }
         }
@@ -27,7 +27,7 @@ public class YearlyReport {
     public int getYearlyOutcomeByMonth(int month) {
         int outcomeByMonth = 0;
         for (YearlyRecord record : yearlyReports) {
-            if ((record.isExpense == true) && (record.month == month)) {
+            if ((record.isExpense) && (record.month == month)) {
                 outcomeByMonth = record.amount;
             }
         }
@@ -37,7 +37,7 @@ public class YearlyReport {
     public int getYearlyAverageIncome() {
         int totalIncome = 0;
         for (YearlyRecord record : yearlyReports) {
-            if (record.isExpense == false) {
+            if (!record.isExpense) {
                 totalIncome = totalIncome + record.amount;
             }
         }
@@ -48,7 +48,7 @@ public class YearlyReport {
     public int getYearlyAverageOutcome() {
         int totalOutcome = 0;
         for (YearlyRecord record : yearlyReports) {
-            if (record.isExpense == true) {
+            if (record.isExpense) {
                 totalOutcome = totalOutcome + record.amount;
             }
         }

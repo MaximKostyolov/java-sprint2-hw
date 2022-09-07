@@ -13,7 +13,7 @@ public class MonthlyReport {
     public int getMonthlyTotalIncome() {
         int totalIncome = 0;
         for (MonthlyRecord record: monthlyReports) {
-            if (record.isExpense == false) {
+            if (!record.isExpense) {
                 totalIncome = totalIncome + record.quantity * record.sumOfOne;
             }
         }
@@ -23,7 +23,7 @@ public class MonthlyReport {
     public int getMonthlyTotalOutcome () {
         int totalOutcome = 0;
         for (MonthlyRecord record: monthlyReports) {
-            if (record.isExpense == true) {
+            if (record.isExpense) {
                 totalOutcome = totalOutcome + record.quantity * record.sumOfOne;
             }
         }
@@ -34,7 +34,7 @@ public class MonthlyReport {
         String mostProfitItem = "";
         int maxProfit = 0;
         for (MonthlyRecord record: monthlyReports) {
-            if (record.isExpense == false) {
+            if (!record.isExpense) {
                 int profit = record.quantity * record.sumOfOne;
                 if (profit > maxProfit) {
                     maxProfit = profit;
@@ -49,7 +49,7 @@ public class MonthlyReport {
         String mostExpenseItem = "";
         int maxExpense = 0;
         for (MonthlyRecord record : monthlyReports) {
-            if (record.isExpense == true) {
+            if (record.isExpense) {
                 int expense = record.quantity * record.sumOfOne;
                 if (expense > maxExpense) {
                     maxExpense = expense;

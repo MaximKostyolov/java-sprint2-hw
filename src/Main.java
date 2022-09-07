@@ -7,12 +7,20 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        HashMap<Integer, MonthlyReport> monthReports = new HashMap<>();
-        ArrayList<YearlyReport> yearReports = new ArrayList<>();
+        final HashMap<Integer, MonthlyReport> monthReports = new HashMap<>();
+        final ArrayList<YearlyReport> yearReports = new ArrayList<>();
 
         printMenu();
-        Scanner scanner = new Scanner(System.in);
-        int userInput = scanner.nextInt();
+        int userInput = 101;
+        while (userInput == 101) {
+            Scanner scanner = new Scanner(System.in);
+            if (scanner.hasNextInt()) {
+                userInput = scanner.nextInt();
+            } else {
+                System.out.println("Введено некорректное значение");
+                printMenu();
+            }
+        }
         while (userInput != 0) { // обработка разных случаев
             if (userInput == 1) {
                 for (int i = 1; i <= 3; i++) {
@@ -23,7 +31,7 @@ public class Main {
                     );
                     monthReports.put(i, monthlyRecords);
                 }
-
+                System.out.println("Месячные отчеты считаны");
             } else if (userInput == 2) {
                 String yearlyReportRow  = readFileContentsOrNull("resources/y.2021.csv");
                 YearlyReport yearlyRecords = new YearlyReport(
@@ -31,6 +39,7 @@ public class Main {
                         YearlyRecord.createYearlyReport(yearlyReportRow)
                 );
                 yearReports.add(yearlyRecords);
+                System.out.println("Годовой отчет считан");
             } else if (userInput == 3) {
                 if ((monthReports.isEmpty()) || (yearReports.isEmpty())) {
                     System.out.println("Отчеты не загружены. Считайте отчеты!");
@@ -53,8 +62,16 @@ public class Main {
                 System.out.println("Извините, такой команды пока нет.");
             }
             printMenu(); // печатаем меню ещё раз перед завершением предыдущего действия
-            Scanner scanner2 = new Scanner(System.in);
-            userInput = scanner.nextInt(); // повторное считывание данных от пользователя
+            userInput = 101; // повторное считывание данных от пользователя
+            while (userInput == 101) {
+                Scanner scanner = new Scanner(System.in);
+                if (scanner.hasNextInt()) {
+                    userInput = scanner.nextInt();
+                } else {
+                    System.out.println("Введено некорректное значение");
+                    printMenu();
+                }
+            }
         }
         System.out.println("Программа завершена");
     }
