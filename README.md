@@ -1,6 +1,3 @@
-# java-sprint2-hw
-Second sprint homework
-
 Приложение для бухгалтерии
 
 Функциональность:
